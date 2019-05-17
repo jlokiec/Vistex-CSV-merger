@@ -3,7 +3,7 @@ using Model;
 using System.Collections.Generic;
 using System.IO;
 
-namespace CsvReader
+namespace Logic
 {
     public class CsvReader
     {
