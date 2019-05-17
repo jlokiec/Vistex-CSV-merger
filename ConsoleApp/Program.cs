@@ -41,7 +41,6 @@ namespace Vistex_CSV_merger
         {
             if (args.Length != 3)
             {
-                Console.WriteLine("Bad number of arguments, you should provide\n1) base CSV file\n2) updated CSV file\n3) output CSV file");
                 return false;
             }
             return true;
