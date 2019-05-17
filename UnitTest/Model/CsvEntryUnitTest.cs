@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
 
-namespace UnitTest
+namespace UnitTest.Model
 {
     [TestClass]
     public class CsvEntryUnitTest
