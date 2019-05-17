@@ -1,6 +1,5 @@
 ﻿using CsvHelper.Configuration;
 using Model;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -17,8 +16,9 @@ namespace CsvReader
             this.dimensionColumns = dimensionColumns;
         }
 
-        public List<CsvEntry> ReadFile(string fileName)
+        public CsvData ReadFile(string fileName)
         {
+            var csvData = new CsvData();
             var csvEntries = new List<CsvEntry>();
             var csvReaderConfiguration = new Configuration()
             {
@@ -51,9 +51,12 @@ namespace CsvReader
 
                     csvEntries.Add(csvEntry);
                 }
+
+                csvData.FieldNames = header;
             }
 
-            return csvEntries;
+            csvData.Entries = csvEntries;
+            return csvData;
         }
     }
 }
