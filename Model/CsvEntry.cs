@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Model
 {
@@ -26,12 +27,44 @@ namespace Model
             }
         }
 
-        public override string ToString()
+        public string GetCsvRow(string[] fieldNames)
         {
-            var s = string.Join(',', DimensionValues.Values);
-            s += ',';
-            s += string.Join(',', MeasureValues.Values);
+            var s = "";
+
+            foreach (var fieldName in fieldNames)
+            {
+                if (DimensionValues.ContainsKey(fieldName))
+                {
+                    s += DimensionValues[fieldName];
+                }
+                else if (MeasureValues.ContainsKey(fieldName))
+                {
+                    s += MeasureValues[fieldName];
+                }
+
+                if (!fieldName.Equals(fieldNames.Last()))
+                {
+                    s += ",";
+                }
+            }
+
             return s;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CsvEntry))
+            {
+                return false;
+            }
+
+            var otherObject = (CsvEntry)obj;
+            return this.DimensionValues.SequenceEqual(otherObject.DimensionValues);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(DimensionValues);
         }
     }
 }
