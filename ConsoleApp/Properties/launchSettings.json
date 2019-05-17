@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Vistex-CSV-merger": {
+      "commandName": "Project",
+      "commandLineArgs": "sales.csv new_sales.csv out.csv"
+    }
+  }
+}
